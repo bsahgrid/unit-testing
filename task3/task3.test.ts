@@ -33,4 +33,11 @@ describe('task3', () => {
     const input = new Date(2007, 0, 31, 23, 15, 0);
     expect(getUtcStringDate(input)).toBe('2007-02-01T04:15:00Z');
   });
+
+  it('returns a fallback string for an invalid date', () => {
+    // constructing an invalid date still returns a Date object,
+    // but its internal time value is NaN
+    const invalid = new Date('this-is-not-a-date');
+    expect(getUtcStringDate(invalid)).toBe('Invalid Date');
+  });
 });
