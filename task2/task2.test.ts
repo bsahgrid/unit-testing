@@ -10,11 +10,17 @@ describe('QuantityValidator', () => {
     expect(() => new QuantityValidator(10, -1)).toThrow();
   });
 
-  it('returns invalid for quantity zero or negative', () => {
+  it('returns invalid with a specific error when quantity is zero or negative', () => {
     const validator = new QuantityValidator(10, 5);
 
-    expect(validator.validate(0)).toEqual({ isValid: false, error: null });
-    expect(validator.validate(-1)).toEqual({ isValid: false, error: null });
+    expect(validator.validate(0)).toEqual({
+      isValid: false,
+      error: 'Quantity must be greater than zero',
+    });
+    expect(validator.validate(-1)).toEqual({
+      isValid: false,
+      error: 'Quantity must be greater than zero',
+    });
   });
 
   it('returns valid when quantity is positive and below threshold', () => {

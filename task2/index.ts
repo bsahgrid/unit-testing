@@ -20,7 +20,7 @@ export class QuantityValidator implements IQuantityValidator {
 
   public validate(quantity: number): { isValid: boolean; error: string | null } {
     if (quantity <= 0) {
-      return { isValid: false, error: null };
+      return { isValid: false, error: 'Quantity must be greater than zero' };
     }
 
     if (quantity < this.threshold) {
